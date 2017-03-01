@@ -7,7 +7,8 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+      # To deal with "max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]" error, add "sysctl -w vm.max_map_count=262144" at docker-machin image .profile. Follw guide: https://discuss.elastic.co/t/elasticsearch-5-0-0-aplha4-wont-start-without-setting-vm-max-map-count/57471/2
+      ES_JAVA_OPTS: "-Xms4g -Xmx4g"
     networks:
       - docker_elk
   logstash:
